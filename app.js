@@ -1,10 +1,13 @@
-// CodeSchool Express Level 1
+// CodeSchool Express Level 2
 // Create a simple express node app meeting the following requirements
 // Requirements
 // Create an express app.
-// Create a root route that returns “Hello World”
-// Create a ‘/name’ route that returns your name
-// Create a /redirect route that sends you to /suprise with a moved permanently status code
+// Create index.html in a folder called public.
+// Index.html
+// Include an H1 header
+// Include a form with an empty selection element
+// Create JS file that will make an ajax request to /cities and display each city inside the selection element.
+// Create a /cities route in your app.js file with at least 4 cities.
 
 var express = require('express');
 var app = express();
