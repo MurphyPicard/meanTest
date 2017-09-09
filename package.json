@@ -1,0 +1,25 @@
+{
+  "name": "meantest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MurphyPicard/meanTest.git"
+  },
+  "keywords": [
+    "key"
+  ],
+  "author": "ara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MurphyPicard/meanTest/issues"
+  },
+  "homepage": "https://github.com/MurphyPicard/meanTest#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
