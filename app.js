@@ -21,7 +21,7 @@ app.get('/redirect', function(req,res){
   // return res.redirect(301, 'https://serviceworke.rs/' + req.originalUrl);
   res.redirect(301, '/surprise');
 });
-// hi
+
 app.listen(9999, function(){
   console.log("9999....");
 });
