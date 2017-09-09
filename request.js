@@ -1,10 +1,17 @@
 function getCities(){
   $.ajax({
-    url: "http://localhost:9999/name",
+    url: "http://localhost:9999/cities",
     success: (data)=>{
+      data.forEach((city)=>{
+        $('select').append('<option>' + city + '</option>')
+      });
+
       console.log(data);
     }
   });
 }
 
-$('#theForm').submit(getCities());
+$('#theForm').submit(function(e){
+  getCities();
+  e.preventDefault();
+});

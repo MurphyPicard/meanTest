@@ -20,9 +20,9 @@ app.get('/name', function(req, res){
   res.send('\nAra Yaghsizian');
 });
 
-app.get('/redirect', function(req,res){
-  // return res.redirect(301, 'https://serviceworke.rs/' + req.originalUrl);
-  res.redirect(301, '/surprise');
+app.get('/cities', function(req,res){
+  res.send(['providence','newport', 'pawtucket', 'warwick']);
+  // res.redirect(301, '/surprise');
 });
 
 app.listen(9999, function(){
