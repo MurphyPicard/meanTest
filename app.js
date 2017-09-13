@@ -14,8 +14,8 @@ Your normalizing of the data should use a middleware function.
 Make sure your /cities route still displays while the other routes can only be accessed by curl currently.
 */
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 app.get('/', function(req, res){
   res.send('\nHello World');
@@ -25,11 +25,40 @@ app.get('/name', function(req, res){
   res.send('\nAra Yaghsizian');
 });
 
-app.get('/cities', function(req,res){
-  res.send(['providence','newport', 'pawtucket', 'warwick']);
+app.get('/cities', function(req, res){
+  var cities = ['Providence','Boston', 'Cleveland', 'Warwick', 'Johnston'];
+  req.query.limit >= 1 ? res.json(cities.slice(0, req.query.limit)) : res.json(cities);
   // res.redirect(301, '/surprise');
 });
 
 app.listen(9999, function(){
   console.log("9999....");
 });
+
+
+// Ara's Notes...
+// app.get(
+//   '/posts',
+//   defaults({
+//     limit: { type: 'number', default: 30 }, // parse limit as number with default 30
+//     offset: { type: 'number', default: 0 }, // parse offset as number with default 0
+//     tags: { type: 'array', default: [] },   // parse coma-separated string as array
+//     sort: { // sort: "asc" and "1" for 1, everything else if -1
+//       type: 'string',
+//       default: v => [ 'asc', '1' ].includes((v || '').toLowerCase()) ? 1 : -1
+//     }
+//   }),
+//   (req, res, next) => {
+//     const { limit, offset, sort, tags } = req.query
+//
+//     Post
+//       .find()
+//       .where({ tags: { $all: tags } })
+//       .skip(offset)
+//       .limit(limit)
+//       .sort({ createdAt: sort })
+//       .exec((err, posts) => {
+//         res.json(posts)
+//       })
+//   }
+// )
