@@ -46,12 +46,7 @@ app.get('/cities', function(req, res){
 app.get('/cities/:name', function(req,res){
   // we can use boston or Boston as params
   var state = cities[req.params.name.charAt(0).toUpperCase() + req.params.name.slice(1).toLowerCase()];
-  if(!state){
-    res.status(404).json("Not Found: "+ req.params.name);
-  }else{
-    res.json(state);
-
-  }
+  !state ? res.status(404).json("Not Found: "+ req.params.name) : res.json(state);
 
 
 });
