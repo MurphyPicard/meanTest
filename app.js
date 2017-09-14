@@ -39,7 +39,14 @@ app.get('/cities', function(req, res){
     'Warwick',
     'Johnston'
   ];
-  req.query.limit >= 1 ? res.json(cities.slice(0, req.query.limit)) : res.json(cities);
+
+  if(req.query.limit > 5){
+    res.status(400).json("Choose 1 - 5!")
+  }
+  else{
+    req.query.limit >= 1 ? res.json(cities.slice(0, req.query.limit)) : res.json(cities);
+  }
+  res.send(cities);
   // res.redirect(301, '/surprise');
 });
 
@@ -47,38 +54,8 @@ app.get('/cities/:name', function(req,res){
   // we can use boston or Boston as params
   var state = cities[req.params.name.charAt(0).toUpperCase() + req.params.name.slice(1).toLowerCase()];
   !state ? res.status(404).json("Not Found: "+ req.params.name) : res.json(state);
-
-
 });
 
 app.listen(9999, function(){
   console.log("9999....");
 });
-
-
-// Ara's Notes...
-// app.get(
-//   '/posts',
-//   defaults({
-//     limit: { type: 'number', default: 30 }, // parse limit as number with default 30
-//     offset: { type: 'number', default: 0 }, // parse offset as number with default 0
-//     tags: { type: 'array', default: [] },   // parse coma-separated string as array
-//     sort: { // sort: "asc" and "1" for 1, everything else if -1
-//       type: 'string',
-//       default: v => [ 'asc', '1' ].includes((v || '').toLowerCase()) ? 1 : -1
-//     }
-//   }),
-//   (req, res, next) => {
-//     const { limit, offset, sort, tags } = req.query
-//
-//     Post
-//       .find()
-//       .where({ tags: { $all: tags } })
-//       .skip(offset)
-//       .limit(limit)
-//       .sort({ createdAt: sort })
-//       .exec((err, posts) => {
-//         res.json(posts)
-//       })
-//   }
-// )

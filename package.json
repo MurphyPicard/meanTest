@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/MurphyPicard/meanTest#readme",
   "dependencies": {
-    "express": "^4.15.4",
-    "express-query-defaults": "^0.1.2"
+    "express": "^4.15.4"
   }
 }

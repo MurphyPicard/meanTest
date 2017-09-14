@@ -12,6 +12,6 @@ function getCities(){
 }
 
 $('#theForm').submit(function(e){
-  getCities();
   e.preventDefault();
+  getCities();
 });
