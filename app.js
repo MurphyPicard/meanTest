@@ -16,6 +16,13 @@ Make sure your /cities route still displays while the other routes can only be a
 
 const express = require('express');
 const app = express();
+var cities = {
+  'Providence': 'RI',
+  'Boston': 'MA',
+  'Cleveland': 'OH',
+  'Warwick': 'RI',
+  'Johnston': 'RI'
+};
 
 app.get('/', function(req, res){
   res.send('\nHello World');
@@ -26,9 +33,21 @@ app.get('/name', function(req, res){
 });
 
 app.get('/cities', function(req, res){
-  var cities = ['Providence','Boston', 'Cleveland', 'Warwick', 'Johnston'];
+  var cities = [
+    'Providence',
+    'Boston',
+    'Cleveland',
+    'Warwick',
+    'Johnston'
+  ];
   req.query.limit >= 1 ? res.json(cities.slice(0, req.query.limit)) : res.json(cities);
   // res.redirect(301, '/surprise');
+});
+
+app.get('/cities/:name', function(req,res){
+  var state = cities[req.params.name];
+  res.json(state);
+
 });
 
 app.listen(9999, function(){
